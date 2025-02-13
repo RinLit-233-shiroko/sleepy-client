@@ -1,6 +1,6 @@
 import sys
 
-import config as cf
+from src import config as cf
 
 from PyQt5 import uic
 from PyQt5.QtCore import Qt, QTimer, QUrl
@@ -14,7 +14,7 @@ from nt_thread import getListThread, getDictThread
 from loguru import logger
 from random import randint
 
-from widgets import get_widget, widgets_names, find_key
+from src.widget.Utils import widgets_names, find_key, get_widget
 
 # 适配高DPI缩放
 QApplication.setHighDpiScaleFactorRoundingPolicy(
@@ -97,7 +97,7 @@ class SleepyClient(FluentWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         # 初始化配置
-        cf.config = cf.ConfigMgr('./', 'config.json')
+        cf.config = cf.ConfigMgr('.', 'config.json')
         cf.config.load_config(DEFAULT_CONFIG)
         update_cf_var(cf.config)
 
@@ -258,7 +258,7 @@ class SleepyClient(FluentWindow):
         self.move((screen_size.width() - self.width()) // 2, (screen_size.height() - self.height()) // 2)
         self.setMinimumSize(400, 300)
         self.setWindowTitle('Sleepy Client')
-        self.setWindowIcon(QIcon('assets/images/favicon.png'))
+        self.setWindowIcon(QIcon('../assets/images/favicon.png'))
         self.navigationInterface.setExpandWidth(150)
         self.navigationInterface.setMinimumExpandWidth(200)
         self.navigationInterface.expand(useAni=False)

@@ -13,8 +13,7 @@ import json
 
 from loguru import logger
 
-import config as cf
-
+from src import config as cf
 
 # 请求重试次数
 RETRY = 3

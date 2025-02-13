@@ -8,10 +8,7 @@ by: @wyf9
 from win32gui import GetWindowText, GetForegroundWindow  # type: ignore
 from requests import post
 from datetime import datetime
-from time import sleep
-from sys import stdout
-from io import TextIOWrapper
-import config as cf
+from src import config as cf
 
 # --- config start
 BYPASS_SAME_REQUEST = True
